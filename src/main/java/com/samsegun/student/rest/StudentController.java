@@ -17,15 +17,7 @@ public class StudentController {
 
     @GetMapping("/")
     public String greet() {
-        return "Hello world!";
-    }
-
-    @PostMapping("/student")
-    public Student student(@RequestBody Student student) {
-        System.out.println("Student data: " + student);
-
-        Student servicedStudent = service.saveStudent(student);
-        return servicedStudent;
+        return "Hey there, Welcome to student Api!";
     }
 
     @GetMapping("/students")
@@ -40,6 +32,14 @@ public class StudentController {
 
 
         return new Student();
+    }
+
+    @PostMapping("/student")
+    public Student student(@RequestBody Student student) {
+        System.out.println("Student data: " + student);
+
+        Student servicedStudent = service.saveStudent(student);
+        return servicedStudent;
     }
 
     @DeleteMapping("/student/{id}")
