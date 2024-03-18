@@ -10,6 +10,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api")
+//@CrossOrigin(origins = "//paste client url here")
 public class StudentController {
 
     @Autowired
@@ -28,10 +29,9 @@ public class StudentController {
     }
 
     @GetMapping("/student/{id}")
-    public Student getStudentById(@PathVariable Long id) {
-
-
-        return new Student();
+    public ResponseEntity<Student> getStudentById(@PathVariable Long id) {
+        Student stu = service.getStudentById(id);
+        return ResponseEntity.ok(stu);
     }
 
     @PostMapping("/student")
@@ -45,8 +45,7 @@ public class StudentController {
     @DeleteMapping("/student/{id}")
     public ResponseEntity<Student> deleteStudentById(@PathVariable Long id) {
 
-
-//        return new ResponseEntity<>(new Student(), HttpStatus.OK);
+        service.deleteStudentById(id);
         return ResponseEntity.noContent().build();
     }
 
